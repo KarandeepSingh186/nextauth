@@ -21,8 +21,8 @@ export const sendEmail = async ({ email, emailType, userId }: any) => {
         
         // Create a transporter using SMTP
         const transporter = nodemailer.createTransport({
-            host: "smtp.example.com",
-            port: 587,
+            host: process.env.SMTP_HOST,
+            port: process.env.SMTP_PORT,
             secure: false, // use STARTTLS (upgrade connection to TLS after connecting)
             auth: {
                 user: process.env.SMTP_USER,

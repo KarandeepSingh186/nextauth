@@ -4,13 +4,14 @@ import { NextRequest, NextResponse } from "next/server";
 import bcryptjs from "bcryptjs";
 import {sendEmail} from "@/helpers/mailer";
 
-connect();
+
 
 export async function POST(request: NextRequest) {
   try {
 
+    await connect();
     const { username, email, password } = await request.json();
-    console.log("Received signup data:", request.json());
+    console.log("Received signup data:", username, email, password);
 
     const existingUser = await User.findOne({ email });
 
